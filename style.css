@@ -1,0 +1,145 @@
+/* ===== 1. Variables (change the colors here) ===== */
+:root {
+  --bg: #faf8f4;
+  --ink: #1c1b19;
+  --muted: #5f5b53;
+  --line: #ddd7cb;
+  --accent: #1f5f5b;
+  --accent-dark: #17433f;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== 2. Base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; margin: 0 0 0.6rem; }
+h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1rem; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+code { background: #eee9de; padding: 0 0.3em; border-radius: 3px; }
+
+.container { width: min(100% - 2.5rem, 880px); margin-inline: auto; }
+
+/* ===== 3. Header and navigation ===== */
+.skip-link { position: absolute; left: -999px; }
+.skip-link:focus { left: 1rem; top: 1rem; background: #fff; padding: 0.5rem 1rem; z-index: 10; }
+
+.site-header { border-bottom: 1px solid var(--line); }
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  padding: 1rem 0;
+}
+.brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.5rem; }
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+nav a:hover { color: var(--ink); }
+nav a.active { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+
+/* ===== 4. Page content ===== */
+main { padding: 3rem 0 4rem; }
+section { margin-bottom: 2.5rem; }
+.hero { padding: 2rem 0 1rem; }
+.page-title { padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.5rem; }
+.lead { font-size: 1.25rem; color: var(--muted); }
+.note { font-size: 0.95rem; color: var(--muted); }
+.plain-list { margin: 0; padding-left: 1.2rem; }
+.plain-list li { margin-bottom: 0.4rem; }
+
+/* Buttons */
+.actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+.btn-outline { background: transparent; color: var(--accent); }
+.btn:disabled { background: #cfc9bc; border-color: #cfc9bc; color: #6b665b; cursor: not-allowed; }
+
+/* ===== 5. Gallery ===== */
+.video { width: 100%; height: 250px; background: #000; border-radius: 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+.project { border-top: 2px solid var(--ink); padding-top: 1rem; }
+.shot, .project img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+.shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ===== 6. Contact form ===== */
+.form { max-width: 560px; }
+.field { margin-bottom: 1.1rem; }
+label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+input, textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #b9b2a3;
+  border-radius: 4px;
+}
+
+/* ===== 7. Footer ===== */
+.site-footer { border-top: 1px solid var(--line); padding: 1.5rem 0; color: var(--muted); font-size: 0.9rem; }
+.site-footer p { margin: 0; }
+
+/* ===== 8. Responsive ===== */
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .nav-bar { flex-direction: column; align-items: flex-start; }
+  nav ul { gap: 1.1rem; flex-wrap: wrap; }
+  main { padding: 2rem 0 3rem; }
+  .lead { font-size: 1.1rem; }
+  .btn { width: 100%; text-align: center; }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  .container { width: min(100% - 3rem, 760px); }
+}
